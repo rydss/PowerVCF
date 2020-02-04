@@ -24,7 +24,7 @@ GUID = '08e28c56-f231-4a2c-8906-dee337cf99b9'
 Author = 'Brian O Connell'
 
 # Description of the functionality provided by this module
-# Description = 'PowerShell Module for the VMware Cloud Foundation API'
+Description = 'PowerShell Module for the VMware Cloud Foundation API'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = '5.0'
