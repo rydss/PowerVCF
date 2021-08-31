@@ -25,6 +25,7 @@ Giuliano Bertello - Dell EMC Sr. Principal Engineer Solutions Architecture \[[Tw
 
 ## What's New
 
+- **NEW** `Remove-VCFTask` New cmdlet that connects to the specified SDDC Manager and cancels a task by ID
 - **UPDATED** `Get-VCFvROPs` updated to improve the output from the API response
 - **UPDATED** `Get-VCFWSA` updated to improve the output from the API response
 - **UPDATED** `Get-VCFvRA` updated to improve the output from the API response

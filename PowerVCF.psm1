@@ -3192,6 +3192,35 @@ Function Restart-VCFTask {
 }
 Export-ModuleMember -Function Restart-VCFTask
 
+Function Remove-VCFTask {
+    <#
+        .SYNOPSIS
+        Connects to the specified SDDC Manager and cancels a task.
+
+        .DESCRIPTION
+        The Remove-VCFTask cmdlet connects to the specified SDDC Manager and cancels a running task using the task id.
+
+        .EXAMPLE
+        PS C:\> Remove-VCFTask -id 7e1c2eee-3177-4e3b-84db-bfebc83f386a
+        This example cancels the task based on the task id
+    #>
+
+    Param (
+        [Parameter (Mandatory = $true)] [ValidateNotNullOrEmpty()] [String]$id
+    )
+
+    Try {
+        createHeader # Calls createHeader function to set Accept & Authorization
+        checkVCFToken # Calls the CheckVCFToken function to validate the access token and refresh if necessary
+        $uri = "https://$sddcManager/v1/tasks/$id"
+        $response = Invoke-RestMethod -Method DELETE -URI $uri -headers $headers
+    }
+    Catch {
+        ResponseException -object $_
+    }
+}
+Export-ModuleMember -Function Remove-VCFTask
+
 #### End APIs for managing Tasks #####
 
 
