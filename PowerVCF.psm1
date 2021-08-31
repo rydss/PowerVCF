@@ -4030,7 +4030,7 @@ Function Get-VCFvROPs {
 
         .EXAMPLE
         PS C:\> Get-VCFvROPs -domains
-        This example lists all workload domains connected to vRealize Operations Manager
+        This example lists the connnection status of all workload domains for vRealize Operations Manager
     #>
 
     Param (
@@ -4168,14 +4168,29 @@ Function Get-VCFvRLI {
         .EXAMPLE
         PS C:\> Get-VCFvRLI
         This example list all details concerning the vRealize Log Insight
+
+        .EXAMPLE
+        PS C:\> Get-VCFvRLI -domains
+        This example lists the connnection status of all workload domains for vRealize Log Insight
     #>
+
+    Param (
+        [Parameter (Mandatory = $false)] [ValidateNotNullOrEmpty()] [Switch]$domains
+    )
 
     Try {
         createHeader # Calls createHeader function to set Accept & Authorization
         checkVCFToken # Calls the CheckVCFToken function to validate the access token and refresh if necessary
-        $uri = "https://$sddcManager/v1/vrlis"
-        $response = Invoke-RestMethod -Method GET -URI $uri -headers $headers
-        $response.elements
+        if ($PsBoundParameters.ContainsKey("domains")) {
+            $uri = "https://$sddcManager/v1/vrli/domains"
+            $response = Invoke-RestMethod -Method GET -URI $uri -headers $headers
+            $response.elements
+        }
+        else {
+            $uri = "https://$sddcManager/v1/vrlis"
+            $response = Invoke-RestMethod -Method GET -URI $uri -headers $headers
+            $response.elements
+        }
     }
     Catch {
         ResponseException -object $_

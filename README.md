@@ -25,8 +25,10 @@ Giuliano Bertello - Dell EMC Sr. Principal Engineer Solutions Architecture \[[Tw
 
 ## What's New
 
-- **NEW** `Add-VCFApplicationVirtualNetwork` cmdlet to add Application Virtual Networks (NSX segments)
-- **UPDATED** `ResponseException` updated the internal error handling function for Core 7.x
+- **UPDATED** `Get-VCFvROPs` updated to improve the output from the API response
+- **UPDATED** `Get-VCFWSA` updated to improve the output from the API response
+- **UPDATED** `Get-VCFvRA` updated to improve the output from the API response
+- **UPDATED** `Get-VCFvRLI` updated to improve the output from the API response and added support for the status of workload domains
 
 ## Documentation
 <a href="https://powervcf.readthedocs.io/en/latest/" target="_blank">PowerVCF Documentation</a>
